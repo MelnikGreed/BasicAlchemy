@@ -8,7 +8,7 @@ class Publisher(Base):
     __tablename__ = "publisher"
 
     id = sq.Column(sq.Integer, primary_key=True)
-    name = sq.Column(sq.Srting(length=40), unique=True)
+    name = sq.Column(sq.Text, nullable=False)
 
 
 class Book(Base):
@@ -25,7 +25,7 @@ class Shop(Base):
     __tablename__ = "shop"
 
     id = sq.Column(sq.Integer, primary_key=True)
-    name = sq.Column(sq.Srting(length=40), unique=True)
+    name = sq.Column(sq.Text, nullable=False)
 
 
 class Stock(Base):
@@ -43,6 +43,7 @@ class Stock(Base):
 class Sale(Base):
     __tablename__ = "sale"
 
+    id = sq.Column(sq.Integer, primary_key=True)
     price = sq.Column(sq.Integer, nullable=False)
     data_sale = sq.Column(sq.Integer, nullable=False)
     count = sq.Column(sq.Integer, nullable=False)
