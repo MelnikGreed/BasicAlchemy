@@ -16,7 +16,7 @@ class Book(Base):
 
     id = sq.Column(sq.Integer, primary_key=True)
     title = sq.Column(sq.Text, nullable=False)
-    id_publisher = sq.Column(sq.Integer, sq.ForeignKey("id_publisher"), nullable=False)
+    id_publisher = sq.Column(sq.Integer, sq.ForeignKey('publisher.id'), nullable=False)
 
     publisher = relationship(Publisher, backref="book")
 
@@ -32,8 +32,8 @@ class Stock(Base):
     __tablename__ = "stock"
 
     id = sq.Column(sq.Integer, primary_key=True)
-    id_book = sq.Column(sq.Integer, sq.ForeignKey("book"), nullable=False)
-    id_shop = sq.Column(sq.Integer, sq.ForeignKey("id_shop"), nullable=False)
+    id_book = sq.Column(sq.Integer, sq.ForeignKey('books.id'), nullable=False)
+    id_shop = sq.Column(sq.Integer, sq.ForeignKey('shop.id'), nullable=False)
     count = sq.Column(sq.Integer, nullable=False)
 
     book = relationship(Book, backref="stock")
@@ -47,7 +47,7 @@ class Sale(Base):
     price = sq.Column(sq.Integer, nullable=False)
     data_sale = sq.Column(sq.Integer, nullable=False)
     count = sq.Column(sq.Integer, nullable=False)
-    id_stock = sq.Column(sq.Integer, sq.ForeignKey("id_stock"), nullable=False)
+    id_stock = sq.Column(sq.Integer, sq.ForeignKey('stock.id'), nullable=False)
 
     book = relationship(Stock, backref="sale")
 
